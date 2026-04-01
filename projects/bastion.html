@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bastion — Matthieu Hakim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  .arch-diagram {
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.7);
+    overflow-x: auto;
+    white-space: pre;
+    padding: 40px;
+    background: #0f0d0b;
+    border: 1px solid rgba(245,240,232,0.06);
+    margin-top: 32px;
+  }
+  .arch-diagram .highlight { color: var(--rust); }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid rgba(196,87,42,0.4);
+    color: var(--rust);
+    margin-bottom: 40px;
+  }
+  .status-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--rust);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .flow-step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-num {
+    font-family: var(--serif); font-size: 36px; font-weight: 300;
+    color: var(--rust); line-height: 1;
+  }
+  .flow-text { font-size: 17px; line-height: 1.7; color: var(--muted); font-weight: 300; padding-top: 4px; }
+  .flow-text strong { color: var(--ink); font-weight: 400; }
+
+  .sdk-tab-bar { display: flex; gap: 2px; margin-bottom: 0; }
+  .sdk-tab {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
+    padding: 10px 20px; background: rgba(245,240,232,0.05);
+    color: rgba(245,240,232,0.4); cursor: pointer; transition: all 0.2s;
+    border: 1px solid rgba(245,240,232,0.08); border-bottom: none;
+  }
+  .sdk-tab.active { background: #0f0d0b; color: var(--cream); }
+  .sdk-panel { display: none; }
+  .sdk-panel.active { display: block; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">MH</a>
+  <a href="../index.html" class="nav-back">← Back to portfolio</a>
+</nav>
+
+<header class="proj-hero">
+  <div>
+    <div class="proj-eyebrow">Open Source · Agentic Systems · MIT 2026</div>
+    <h1 class="proj-title">Bas<em>tion</em></h1>
+    <p class="proj-tagline">The trust proxy for AI agents. Credential vault, ABAC policy engine, human-in-the-loop gate, and signed audit chain — between your agents and the APIs they call.</p>
+    <div class="proj-links" style="margin-top:36px;">
+      <a href="https://github.com/Matthieuhakim/Bastion" target="_blank" class="proj-link-btn">GitHub Repository ↗</a>
+      <span class="proj-link-btn ghost" style="cursor:default;">Bastion Cloud — Coming Soon</span>
+    </div>
+  </div>
+  <div class="proj-meta">
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Status</div>
+      <div class="proj-meta-value">Open Source ✓</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Stack</div>
+      <div class="proj-meta-value">TypeScript · Python</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">License</div>
+      <div class="proj-meta-value">MIT</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">SDKs</div>
+      <div class="proj-meta-value">Node · Python</div>
+    </div>
+  </div>
+</header>
+
+<!-- Problem -->
+<section class="proj-section">
+  <div class="proj-section-label">The Problem</div>
+  <h2>Agents need API access.<br><em>But not this much.</em></h2>
+  <div class="proj-body">
+    <p>Your AI agent needs a Stripe key to process refunds. But a raw API key means it could charge $1M or delete every customer. Today, developers either hand agents raw credentials and pray — or build bespoke guardrails from scratch for every deployment.</p>
+    <p>Bastion solves this at the infrastructure layer: <strong>agents get access to APIs without ever seeing the keys.</strong> Every call goes through a policy engine before it touches the real API. Every decision is cryptographically logged. Humans can be pulled in at the right moments.</p>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="proj-section" style="background: rgba(139,107,71,0.03);">
+  <div class="proj-section-label">How It Works</div>
+  <h2>Five steps, every call.</h2>
+  <div style="max-width: 680px; margin-top: 8px;">
+    <div class="flow-step">
+      <div class="flow-num">01</div>
+      <div class="flow-text">Your agent sends a request to Bastion: <strong>"I want to charge $50 using credential X."</strong></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">02</div>
+      <div class="flow-text"><strong>Policy check.</strong> Is this agent allowed to do this? At this amount? At this time of day? Against this IP? Bastion evaluates ABAC rules — allow, deny, or escalate.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">03</div>
+      <div class="flow-text">On <strong>ALLOW</strong>: Bastion decrypts the credential from the vault, injects it into the outbound request, calls the external API, and returns the result. The key never leaves the server.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">04</div>
+      <div class="flow-text">On <strong>ESCALATE</strong>: the request is held open while a human reviews it via the admin API. On approval the proxy flow resumes. On denial or timeout (5 min default), the agent gets a 403.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">05</div>
+      <div class="flow-text"><strong>Every outcome</strong> — ALLOW, DENY, ESCALATE — is canonicalized, SHA-256 hashed, Ed25519-signed, and linked to the previous record. The chain is queryable and verifiable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Dark: Features -->
+<section class="proj-dark">
+  <div class="proj-section-label">Core Features</div>
+  <h2>Everything agents need.<br><em>Nothing they shouldn't have.</em></h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🔐</div>
+      <div class="feature-title">Credential Vault</div>
+      <div class="feature-desc">Envelope encryption — AES-256-GCM + HKDF. Each credential gets its own data encryption key. Raw values are never returned over the API or stored in logs. Credentials can be scoped, revoked, or rotated without touching your agents.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚖️</div>
+      <div class="feature-title">ABAC Policy Engine</div>
+      <div class="feature-desc">Fine-grained rules per agent and credential. Wildcard action matching (charges.*), per-transaction and daily spend limits, Redis-backed rate limiting, timezone-aware time windows, IP allowlists, and approval thresholds that trigger ESCALATE.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧑‍💻</div>
+      <div class="feature-title">Human-in-the-Loop Gate</div>
+      <div class="feature-desc">When a policy triggers ESCALATE, the agent's request is held open while a human reviews. Admins approve or deny via the API or dashboard. Optional webhook notifications. The agent resumes transparently on approval — no retry logic needed.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <div class="feature-title">Signed Audit Chain</div>
+      <div class="feature-desc">Every ALLOW, DENY, and ESCALATE outcome is canonicalized, SHA-256 hashed, signed with the agent's Ed25519 key, and linked to the previous record. Query the chain at /v1/audit — or verify its integrity in one command.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <div class="feature-title">Fail Closed</div>
+      <div class="feature-desc">No policy for an agent+credential pair means DENY. Bastion never silently allows a request. SSRF protection blocks localhost and cloud metadata endpoints out of the box. Security is the default, not an opt-in.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔌</div>
+      <div class="feature-title">OpenClaw Plugin</div>
+      <div class="feature-desc">Ships an OpenClaw plugin (@bastion-ai/bastion) that routes protected outbound tool calls through Bastion. Agents call bastion_fetch instead of direct tools — the plugin matches URLs to credentials and enforces policies transparently.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px;">
+    <div class="proj-section-label" style="margin-bottom:20px;">Tech Stack</div>
+    <div class="stack-grid">
+      <span class="stack-pill">Express 5 + TypeScript</span>
+      <span class="stack-pill">PostgreSQL 17</span>
+      <span class="stack-pill">Redis 7</span>
+      <span class="stack-pill">Prisma 6</span>
+      <span class="stack-pill">AES-256-GCM</span>
+      <span class="stack-pill">Ed25519</span>
+      <span class="stack-pill">Docker</span>
+      <span class="stack-pill">Vite + React Dashboard</span>
+      <span class="stack-pill">Python SDK (httpx)</span>
+      <span class="stack-pill">Node SDK</span>
+    </div>
+  </div>
+</section>
+
+<!-- SDKs -->
+<section class="proj-section">
+  <div class="proj-section-label">SDKs</div>
+  <h2>Integrate in <em>minutes.</em></h2>
+  <p class="proj-body" style="max-width:600px; margin-bottom: 32px;">Bastion ships first-class SDKs for TypeScript and Python. Zero runtime dependencies for the Node SDK.</p>
+
+  <div class="sdk-tab-bar">
+    <div class="sdk-tab active" onclick="switchTab('ts')">TypeScript</div>
+    <div class="sdk-tab" onclick="switchTab('py')">Python</div>
+  </div>
+
+  <div id="tab-ts" class="sdk-panel active">
+    <div class="code-block">
+<span class="code-comment">// npm install @bastion-ai/sdk</span>
+<span class="code-key">import</span> { BastionClient } <span class="code-key">from</span> '@bastion-ai/sdk';
+
+<span class="code-key">const</span> client = <span class="code-key">new</span> BastionClient({
+  baseUrl: 'http://localhost:3000',
+  apiKey: agentSecret,
+});
+
+<span class="code-key">const</span> result = <span class="code-key">await</span> client.execute({
+  credentialId: '&lt;credential_id&gt;',
+  action: 'charges.create',
+  params: { amount: 50 },
+  target: {
+    url: 'https://api.stripe.com/v1/charges',
+    method: 'POST',
+    body: { amount: 5000, currency: 'usd' }
+  },
+});
+
+<span class="code-comment">// result.meta.policyDecision → "ALLOW"</span>
+<span class="code-comment">// result.upstream.body       → Stripe's response</span></div>
+  </div>
+
+  <div id="tab-py" class="sdk-panel">
+    <div class="code-block">
+<span class="code-comment"># pip install bastion-sdk</span>
+<span class="code-key">from</span> bastion_sdk <span class="code-key">import</span> BastionClient
+
+<span class="code-key">with</span> BastionClient(<span style="color:#a8c4a0">"http://localhost:3000"</span>, api_key=agent_secret) <span class="code-key">as</span> client:
+    result = client.execute(
+        credential_id=<span style="color:#a8c4a0">"&lt;credential_id&gt;"</span>,
+        action=<span style="color:#a8c4a0">"charges.create"</span>,
+        params={<span style="color:#a8c4a0">"amount"</span>: 50},
+        target={
+            <span style="color:#a8c4a0">"url"</span>: <span style="color:#a8c4a0">"https://api.stripe.com/v1/charges"</span>,
+            <span style="color:#a8c4a0">"method"</span>: <span style="color:#a8c4a0">"POST"</span>,
+            <span style="color:#a8c4a0">"body"</span>: {<span style="color:#a8c4a0">"amount"</span>: 5000, <span style="color:#a8c4a0">"currency"</span>: <span style="color:#a8c4a0">"usd"</span>},
+        },
+    )
+<span class="code-comment">    # Both sync and async clients available</span></div>
+  </div>
+</section>
+
+<!-- Roadmap -->
+<section class="proj-section" style="border-bottom: 2px solid var(--ink);">
+  <div class="proj-section-label">What's Next</div>
+  <h2>Bastion <em>Cloud</em></h2>
+  <div class="proj-body">
+    <p>Bastion is open source and self-hostable today. Bastion Cloud — the managed SaaS version — is in development. The vision: a hosted trust layer that any agent developer can plug into without running their own infrastructure.</p>
+    <p>If you're building with AI agents and want early access or want to contribute, the repo is open.</p>
+  </div>
+  <div class="proj-links">
+    <a href="https://github.com/Matthieuhakim/Bastion" target="_blank" class="proj-link-btn">Star on GitHub ↗</a>
+    <a href="https://github.com/Matthieuhakim/Bastion/blob/main/CONTRIBUTING.md" target="_blank" class="proj-link-btn ghost">Contributing Guide ↗</a>
+  </div>
+</section>
+
+<footer>
+  <span>Bastion — MIT 2026</span>
+  <a href="../index.html" style="color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;">← Back to portfolio</a>
+  <span>Matthieu Hakim</span>
+</footer>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.sdk-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.sdk-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('[onclick="switchTab(\'' + tab + '\')"]').classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+</script>
+</body>
+</html>

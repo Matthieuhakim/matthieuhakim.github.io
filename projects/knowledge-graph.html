@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semantic Knowledge Graph — Matthieu Hakim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  .graph-viz {
+    background: var(--ink);
+    padding: 48px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .graph-svg { width: 100%; max-width: 720px; }
+
+  .data-source {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: center;
+  }
+  .data-source:last-child { border-bottom: none; }
+  .ds-icon { font-size: 32px; }
+  .ds-title { font-family: var(--sans); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin-bottom: 6px; }
+  .ds-desc { font-size: 16px; line-height: 1.6; color: var(--muted); font-weight: 300; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">MH</a>
+  <a href="../index.html" class="nav-back">← Back to portfolio</a>
+</nav>
+
+<header class="proj-hero">
+  <div>
+    <div class="proj-eyebrow">MIT Analytics Capstone · Level Agency · Spring–Summer 2026</div>
+    <h1 class="proj-title">Semantic<br><em>Knowledge</em><br>Graph</h1>
+    <p class="proj-tagline">A graph-native brain for enterprise AI agents — unifying Zoom, Slack, and Google Drive into a single queryable knowledge layer for multi-hop reasoning.</p>
+  </div>
+  <div class="proj-meta">
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Client</div>
+      <div class="proj-meta-value">Level Agency (MIT Capstone)</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Role</div>
+      <div class="proj-meta-value">AI Knowledge Graph Engineer</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Stack</div>
+      <div class="proj-meta-value">Neo4j · LangGraph · OpenAI</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Confidentiality</div>
+      <div class="proj-meta-value">Enterprise Client Work</div>
+    </div>
+  </div>
+</header>
+
+<!-- Problem -->
+<section class="proj-section">
+  <div class="proj-section-label">The Problem</div>
+  <h2>Company knowledge is <em>everywhere and nowhere.</em></h2>
+  <div class="proj-body">
+    <p>Every organization accumulates a mountain of institutional knowledge — decisions made in Zoom calls, context shared in Slack threads, documents living in Google Drive folders nobody remembers. This knowledge is siloed, unstructured, and practically invisible to AI agents trying to answer questions or take actions on behalf of employees.</p>
+    <p>The goal of this project: <strong>build a system where an AI agent can ask a question that spans multiple data sources and get a coherent, contextually grounded answer</strong> — without a human having to manually connect the dots.</p>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="proj-section" style="background: rgba(139,107,71,0.03);">
+  <div class="proj-section-label">Architecture</div>
+  <h2>Graph-native, <em>agent-first.</em></h2>
+  <div class="proj-body">
+    <p>The system is built around a <strong>Neo4j knowledge graph</strong> as the central store — not a vector database, not a SQL table. Relationships between entities (people, decisions, documents, meetings) are first-class citizens. This allows agents to traverse connections that a flat retrieval system would miss entirely.</p>
+  </div>
+
+  <!-- Node/edge diagram using SVG -->
+  <div class="graph-viz">
+    <svg class="graph-svg" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- Edges -->
+      <line x1="200" y1="150" x2="360" y2="150" stroke="rgba(196,87,42,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="360" y1="150" x2="520" y2="80" stroke="rgba(196,87,42,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="360" y1="150" x2="520" y2="150" stroke="rgba(196,87,42,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="360" y1="150" x2="520" y2="220" stroke="rgba(196,87,42,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="80" y1="150" x2="200" y2="150" stroke="rgba(245,240,232,0.15)" stroke-width="1.5"/>
+
+      <!-- Agent node -->
+      <circle cx="80" cy="150" r="28" fill="none" stroke="rgba(196,87,42,0.7)" stroke-width="1.5"/>
+      <text x="80" y="154" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="rgba(196,87,42,0.9)" letter-spacing="0.05em">AGENT</text>
+
+      <!-- Central Neo4j node -->
+      <circle cx="200" cy="150" r="36" fill="rgba(245,240,232,0.05)" stroke="rgba(245,240,232,0.3)" stroke-width="1.5"/>
+      <text x="200" y="146" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.7)">Neo4j</text>
+      <text x="200" y="160" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.5)">Graph</text>
+
+      <!-- LangGraph orchestration -->
+      <rect x="310" y="118" width="100" height="64" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.2)" stroke-width="1"/>
+      <text x="360" y="146" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.7)">LangGraph</text>
+      <text x="360" y="160" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.45)">Orchestration</text>
+
+      <!-- Data sources -->
+      <circle cx="520" cy="80" r="24" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.18)" stroke-width="1"/>
+      <text x="520" y="76" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.6)">Zoom</text>
+      <text x="520" y="88" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.4)">calls</text>
+
+      <circle cx="520" cy="150" r="24" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.18)" stroke-width="1"/>
+      <text x="520" y="146" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.6)">Slack</text>
+      <text x="520" y="158" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.4)">threads</text>
+
+      <circle cx="520" cy="220" r="24" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.18)" stroke-width="1"/>
+      <text x="520" y="216" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.6)">Drive</text>
+      <text x="520" y="228" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="rgba(245,240,232,0.4)">docs</text>
+
+      <!-- Edge labels -->
+      <text x="282" y="142" font-family="'DM Mono', monospace" font-size="8" fill="rgba(196,87,42,0.6)">Cypher</text>
+      <text x="415" y="108" font-family="'DM Mono', monospace" font-size="8" fill="rgba(245,240,232,0.25)">ingest</text>
+      <text x="415" y="148" font-family="'DM Mono', monospace" font-size="8" fill="rgba(245,240,232,0.25)">ingest</text>
+      <text x="415" y="196" font-family="'DM Mono', monospace" font-size="8" fill="rgba(245,240,232,0.25)">ingest</text>
+    </svg>
+  </div>
+</section>
+
+<!-- Data sources -->
+<section class="proj-dark">
+  <div class="proj-section-label">Data Sources</div>
+  <h2>Three sources. <em>One graph.</em></h2>
+  <div style="margin-top: 8px;">
+    <div class="data-source">
+      <div class="ds-icon">📹</div>
+      <div>
+        <div class="ds-title">Zoom Transcripts</div>
+        <div class="ds-desc">Meeting recordings are transcribed and parsed into entities: who said what, what decisions were made, what action items were assigned. These become nodes and relationships in the graph.</div>
+      </div>
+    </div>
+    <div class="data-source">
+      <div class="ds-icon">💬</div>
+      <div>
+        <div class="ds-title">Slack Threads</div>
+        <div class="ds-desc">Conversations are ingested and structured — linking topics, people, channels, and time. Agents can trace how a decision evolved through async discussion, not just find the final message.</div>
+      </div>
+    </div>
+    <div class="data-source">
+      <div class="ds-icon">📁</div>
+      <div>
+        <div class="ds-title">Google Drive Documents</div>
+        <div class="ds-desc">Reports, specs, and presentations are parsed for entities and linked to the people and conversations that reference them — creating a connected document graph, not a flat search index.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End-user discovery -->
+<section class="proj-section">
+  <div class="proj-section-label">Process</div>
+  <h2>Discovery-driven <em>architecture.</em></h2>
+  <div class="proj-body">
+    <p>Graph architecture decisions were grounded in end-user discovery sessions — understanding what questions employees actually need to answer, how they currently navigate company knowledge, and where existing tools fail them.</p>
+    <p>Live user feedback was also captured as modeling data: when an agent gave a wrong or incomplete answer, that failure signal was used to refine the graph schema and retrieval strategies iteratively. The architecture evolved alongside real usage.</p>
+  </div>
+
+  <div class="stack-grid">
+    <span class="stack-pill">Python</span>
+    <span class="stack-pill">Neo4j + Cypher</span>
+    <span class="stack-pill">LangGraph</span>
+    <span class="stack-pill">OpenAI</span>
+    <span class="stack-pill">Multi-hop Retrieval</span>
+    <span class="stack-pill">Entity Extraction</span>
+    <span class="stack-pill">User Discovery Sessions</span>
+  </div>
+</section>
+
+<footer>
+  <span>Semantic Knowledge Graph · MIT × Level Agency</span>
+  <a href="../index.html" style="color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;">← Back to portfolio</a>
+  <span>Matthieu Hakim</span>
+</footer>
+
+</body>
+</html>

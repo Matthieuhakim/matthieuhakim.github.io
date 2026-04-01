@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commando Bob — Matthieu Hakim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    margin-top: 40px;
+    background: #000;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  .video-gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2px;
+    margin-top: 40px;
+  }
+  .video-main { }
+  .video-side { display: flex; flex-direction: column; gap: 2px; }
+  .video-thumb {
+    background: var(--ink);
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+  }
+  .video-thumb iframe { width: 100%; height: 100%; border: none; }
+  .video-thumb-small { aspect-ratio: 16/9; flex: 1; }
+
+  .timeline-row {
+    display: flex;
+    gap: 0;
+    margin-top: 40px;
+    overflow-x: auto;
+  }
+  .tl-step {
+    flex: 1;
+    min-width: 140px;
+    padding: 24px 20px;
+    border: 1px solid rgba(245,240,232,0.08);
+    border-right: none;
+    position: relative;
+  }
+  .tl-step:last-child { border-right: 1px solid rgba(245,240,232,0.08); }
+  .tl-phase {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--rust); margin-bottom: 10px;
+  }
+  .tl-title {
+    font-family: var(--serif); font-size: 18px; font-weight: 300;
+    color: var(--cream); margin-bottom: 8px;
+  }
+  .tl-desc { font-size: 13px; color: rgba(245,240,232,0.4); font-weight: 300; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">MH</a>
+  <a href="../index.html" class="nav-back">← Back to portfolio</a>
+</nav>
+
+<header class="proj-hero">
+  <div>
+    <div class="proj-eyebrow">Mobile Game · Solo Project · Google Play Store · 2020</div>
+    <h1 class="proj-title">Commando<br><em>Bob</em></h1>
+    <p class="proj-tagline">A mobile action game built solo and published to the Google Play Store at age 17 — the project that turned a hobbyist into a builder.</p>
+    <div class="proj-links" style="margin-top: 36px;">
+      <a href="https://www.youtube.com/@commandobob5953" target="_blank" class="proj-link-btn">YouTube Channel ↗</a>
+      <span class="proj-link-btn ghost" style="cursor:default;">No longer on Play Store</span>
+    </div>
+  </div>
+  <div class="proj-meta">
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Engine</div>
+      <div class="proj-meta-value">Unity</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Language</div>
+      <div class="proj-meta-value">C#</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Platform</div>
+      <div class="proj-meta-value">Android (Google Play)</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Year</div>
+      <div class="proj-meta-value">2020</div>
+    </div>
+  </div>
+</header>
+
+<!-- Video -->
+<section class="proj-section" style="padding-bottom: 40px;">
+  <div class="proj-section-label">Gameplay</div>
+  <h2>See it in <em>action.</em></h2>
+  <div class="video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/bJdkHe1VH9w"
+      title="Commando Bob gameplay"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <p style="font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 16px; letter-spacing: 0.06em;">
+    More videos on the <a href="https://www.youtube.com/@commandobob5953" target="_blank" style="color: var(--rust); border-bottom: 1px solid rgba(196,87,42,0.3);">Commando Bob YouTube channel →</a>
+  </p>
+</section>
+
+<!-- What it was -->
+<section class="proj-section" style="background: rgba(139,107,71,0.03);">
+  <div class="proj-section-label">The Game</div>
+  <h2>Built from scratch, <em>shipped for real.</em></h2>
+  <div class="proj-body">
+    <p>Commando Bob is a mobile action game built solo in <strong>Unity with C#</strong>. Every system was written from scratch — character movement, enemy AI, level design, UI, animations, and sound integration. No game jams, no tutorials followed to completion. Just building until it worked.</p>
+    <p>Getting it published on the Google Play Store required learning not just game development but app signing, Play Console submission, store listing optimization, and update management. It was a full product launch — shipped by one person.</p>
+  </div>
+
+  <div class="feature-grid" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="feature-icon">🕹️</div>
+      <div class="feature-title">Core Gameplay</div>
+      <div class="feature-desc">Mobile action mechanics with touch controls — designed specifically for phone play. Character movement, combat, and progression systems all built in Unity's MonoBehaviour architecture.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <div class="feature-title">Enemy AI</div>
+      <div class="feature-desc">Custom enemy behavior implemented in C# — patrol patterns, detection ranges, attack logic, and state machines. Each enemy type had distinct behavior to create varied encounters.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <div class="feature-title">Level Design</div>
+      <div class="feature-desc">Multiple levels designed and built using Unity's scene system — balancing difficulty, pacing, and replayability. Everything from layout to enemy placement to environmental hazards.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">Published & Live</div>
+      <div class="feature-desc">Went through the full Google Play publishing pipeline — app signing, store listing, content rating, release management. A real product, not a prototype that lived on a hard drive.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Build timeline -->
+<section class="proj-dark">
+  <div class="proj-section-label">The Build</div>
+  <h2>Solo, <em>start to ship.</em></h2>
+
+  <div class="timeline-row">
+    <div class="tl-step">
+      <div class="tl-phase">Phase 01</div>
+      <div class="tl-title">Concept</div>
+      <div class="tl-desc">Defined the genre, core mechanic, and visual direction. Chose Unity for its Android export workflow.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-phase">Phase 02</div>
+      <div class="tl-title">Prototype</div>
+      <div class="tl-desc">Built core movement and combat in C#. Got playable as fast as possible to validate the feel.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-phase">Phase 03</div>
+      <div class="tl-title">Content</div>
+      <div class="tl-desc">Built levels, designed enemies, added progression, tuned difficulty across the full arc.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-phase">Phase 04</div>
+      <div class="tl-title">Polish</div>
+      <div class="tl-desc">Sound, animations, UI, and performance optimization for target Android devices.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-phase">Phase 05</div>
+      <div class="tl-title">Ship</div>
+      <div class="tl-desc">Published to Google Play Store. Managed updates and release cycle post-launch.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px;">
+    <div class="proj-section-label" style="margin-bottom: 20px;">Stack</div>
+    <div class="stack-grid">
+      <span class="stack-pill">Unity</span>
+      <span class="stack-pill">C#</span>
+      <span class="stack-pill">Android / Google Play</span>
+      <span class="stack-pill">MonoBehaviour Architecture</span>
+      <span class="stack-pill">Game AI / State Machines</span>
+      <span class="stack-pill">Level Design</span>
+    </div>
+  </div>
+</section>
+
+<!-- Reflection -->
+<section class="proj-section" style="border-bottom: 2px solid var(--ink);">
+  <div class="proj-section-label">Why It Matters</div>
+  <h2>The project that <em>started everything.</em></h2>
+  <div class="proj-body">
+    <p>Commando Bob was the project where I learned what it actually meant to finish something. Not finish as in "it runs on my machine" — finish as in publish, ship, and let strangers use it. That experience of closing the loop — from idea to real product in people's hands — became the standard I hold every project to.</p>
+    <p>It's also why I gravitate toward building over theorizing. The game is gone from the Play Store, but the habit it built stuck around.</p>
+  </div>
+  <div class="proj-links">
+    <a href="https://www.youtube.com/@commandobob5953" target="_blank" class="proj-link-btn">Watch on YouTube ↗</a>
+  </div>
+</section>
+
+<footer>
+  <span>Commando Bob · 2020</span>
+  <a href="../index.html" style="color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;">← Back to portfolio</a>
+  <span>Matthieu Hakim</span>
+</footer>
+
+</body>
+</html>

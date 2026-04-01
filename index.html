@@ -721,7 +721,8 @@
   <div class="hero-left">
     <div class="hero-eyebrow reveal d1">MIT MBAn · Cambridge, MA</div>
     <h1 class="hero-name reveal d2">
-      <em>Matthieu</em><br>Hakim
+      <span style="display:block;"><em>Matthieu</em></span>
+      <span style="display:block;">Hakim</span>
     </h1>
     <p class="hero-desc reveal d3">
       Builder at the intersection of AI infrastructure and practical tooling. I design systems that think, adapt, and prove their integrity.
@@ -805,7 +806,7 @@
   <hr class="rule-heavy" style="margin-bottom:64px;">
   <div class="section-header">
     <h2 class="section-title">Experience</h2>
-    <span class="section-count">06 roles</span>
+    <span class="section-count">07 roles</span>
   </div>
 
   <div class="exp-grid">
@@ -890,6 +891,23 @@
     </div>
 
     <div class="exp-item">
+      <div class="exp-period">2023–2024</div>
+      <div class="exp-body">
+        <div class="exp-role">Founder &amp; Full-Stack Developer</div>
+        <div class="exp-company">Wing Write — Montreal</div>
+        <div class="exp-desc">Built and launched an AI writing tool that helped 1,000+ users craft personalized cold emails and outreach — generating over 10,000 emails in total. Powered by OpenAI's API, with a full-stack Java / JavaScript / SQL backend. Shipped a CI/CD pipeline with GitHub Actions that cut deployment time by 70%.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">OpenAI API</span>
+          <span class="exp-tag">Java</span>
+          <span class="exp-tag">JavaScript</span>
+          <span class="exp-tag">SQL</span>
+          <span class="exp-tag">GitHub Actions</span>
+        </div>
+      </div>
+      <div class="exp-arrow">→</div>
+    </div>
+
+        <div class="exp-item">
       <div class="exp-period">2022<br>Summer</div>
       <div class="exp-body">
         <div class="exp-role">Backend Developer Intern</div>
@@ -917,7 +935,7 @@
 
   <div class="projects-grid">
 
-    <div class="project-card featured">
+    <div class="project-card featured" style="cursor:pointer;" onclick="window.location='projects/bastion.html'">
       <div class="project-num">01 — Featured</div>
       <div class="project-title">Bastion — Trust Proxy for AI Agents</div>
       <div class="project-org">Agentic Systems Course · MIT</div>
@@ -938,7 +956,7 @@
 
     <div class="project-card">
       <div class="project-num">02</div>
-      <div class="project-title">DESA — Dynamic Emotional State Architecture</div>
+      <div class="project-title" style="cursor:pointer;" onclick="window.location='projects/desa.html'">DESA — Dynamic Emotional State Architecture</div>
       <div class="project-org">NLP Research · MIT 6.8610</div>
       <div class="project-desc">
         Replaced static persona prompts with a continuously updating VAD emotional state vector. LoRA adapter blending shifts model behavior in real-time, enabling more naturalistic, contextually appropriate LLM responses.
@@ -954,7 +972,7 @@
 
     <div class="project-card">
       <div class="project-num">03</div>
-      <div class="project-title">Semantic Knowledge Graph</div>
+      <div class="project-title" style="cursor:pointer;" onclick="window.location='projects/knowledge-graph.html'">Semantic Knowledge Graph</div>
       <div class="project-org">MIT × Level Agency Capstone</div>
       <div class="project-desc">
         Graph-native brain for enterprise AI agents — ingesting Zoom transcripts, Slack threads, and Google Drive documents into a unified Neo4j knowledge graph enabling multi-hop reasoning across company knowledge.
@@ -968,7 +986,57 @@
       <div class="project-bg-num">03</div>
     </div>
 
+
+    <div class="project-card" onclick="window.location='projects/cartier.html'" style="cursor:pointer;">
+      <div class="project-num">03b</div>
+      <div class="project-title">Cartier Intelligence Agent</div>
+      <div class="project-org">MIT Gen AI Lab · 2026</div>
+      <div class="project-desc">
+        Self-healing web scraping agent + competitive intelligence pipeline for a luxury goods client. LLM-driven navigation adapts to HTML changes; entity recognition surfaces market signals from unstructured media.
+      </div>
+      <div class="project-stack">
+        <span class="stack-pill">Google ADK</span>
+        <span class="stack-pill">Playwright</span>
+        <span class="stack-pill">Firecrawl</span>
+        <span class="stack-pill">Vertex AI</span>
+      </div>
+      <div class="project-bg-num">03b</div>
+    </div>
+    <div class="project-card" style="cursor:pointer;" onclick="window.location='projects/wingwrite.html'">
+      <div class="project-num">04</div>
+      <div class="project-title">Wing Write</div>
+      <div class="project-org">Startup · 2023–2024</div>
+      <div class="project-desc">
+        AI-powered writing tool for cold emails and outreach. 1,000+ users, 10,000+ emails generated. Full-stack Java/JS/SQL with OpenAI API and a CI/CD pipeline that cut deploy time by 70%.
+      </div>
+      <div class="project-stack">
+        <span class="stack-pill">OpenAI API</span>
+        <span class="stack-pill">Java</span>
+        <span class="stack-pill">JavaScript</span>
+        <span class="stack-pill">SQL</span>
+        <span class="stack-pill">GitHub Actions</span>
+      </div>
+      <div class="project-bg-num">04</div>
+    </div>
+
+    <div class="project-card" style="cursor:pointer;" onclick="window.location='projects/commando-bob.html'">
+      <div class="project-num">05</div>
+      <div class="project-title">Commando Bob</div>
+      <div class="project-org">Mobile Game · 2020</div>
+      <div class="project-desc">
+        Published mobile game on the Google Play Store — built solo in Unity with C#. Included level design, enemy AI, and animations. A first foray into shipping a real product to real users.
+      </div>
+      <div class="project-stack">
+        <span class="stack-pill">Unity</span>
+        <span class="stack-pill">C#</span>
+        <span class="stack-pill">Game Design</span>
+        <span class="stack-pill">Android</span>
+      </div>
+      <div class="project-bg-num">05</div>
+    </div>
+
   </div>
+
 </section>
 
 <!-- ── Skills ─────────────────────────────────── -->
@@ -1091,27 +1159,21 @@
       </div>
       <div class="contact-link-arrow">↗</div>
     </a>
-    <a href="https://www.linkedin.com/in/matthieu-hakim/" target="_blank" class="contact-link">
+    <a href="https://www.linkedin.com/in/matthieu-hakim/" target="_blank" target="_blank" class="contact-link">
       <div>
         <div class="contact-link-label">LinkedIn</div>
         <div class="contact-link-value">matthieu-hakim</div>
       </div>
       <div class="contact-link-arrow">↗</div>
     </a>
-    <a href="https://github.com/matthieuhakim" target="_blank" class="contact-link">
+    <a href="https://github.com/Matthieuhakim" target="_blank" class="contact-link">
       <div>
         <div class="contact-link-label">GitHub</div>
         <div class="contact-link-value">matthieuhakim</div>
       </div>
       <div class="contact-link-arrow">↗</div>
     </a>
-    <a href="#" class="contact-link" style="border-bottom:none;">
-      <div>
-        <div class="contact-link-label">Resume</div>
-        <div class="contact-link-value">Download PDF</div>
-      </div>
-      <div class="contact-link-arrow">↓</div>
-    </a>
+
   </div>
 </section>
 

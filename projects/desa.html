@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DESA — Matthieu Hakim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  .wip-banner {
+    background: rgba(196,87,42,0.08);
+    border: 1px solid rgba(196,87,42,0.25);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 48px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--rust);
+    letter-spacing: 0.06em;
+  }
+  .wip-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--rust);
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .vad-visual {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+  .vad-dim {
+    padding: 36px 28px;
+    border: 1px solid var(--rule);
+    text-align: center;
+  }
+  .vad-letter {
+    font-family: var(--serif); font-size: 72px; font-weight: 300;
+    line-height: 1; color: var(--rust); font-style: italic;
+    margin-bottom: 12px;
+  }
+  .vad-name {
+    font-family: var(--sans); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .vad-desc { font-size: 15px; color: var(--muted); font-weight: 300; line-height: 1.6; }
+
+  .contrast-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 40px;
+  }
+  .contrast-side { padding: 36px 32px; border: 1px solid var(--rule); }
+  .contrast-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+  }
+  .contrast-label.new { color: var(--rust); }
+  .contrast-title {
+    font-family: var(--serif); font-size: 22px; font-weight: 300;
+    margin-bottom: 12px;
+  }
+  .contrast-desc { font-size: 15px; color: var(--muted); font-weight: 300; line-height: 1.65; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">MH</a>
+  <a href="../index.html" class="nav-back">← Back to portfolio</a>
+</nav>
+
+<header class="proj-hero">
+  <div>
+    <div class="proj-eyebrow">NLP Research · MIT 6.8610 · 2025–2026</div>
+    <h1 class="proj-title">D<em>E</em>SA</h1>
+    <p class="proj-tagline">Dynamic Emotional-State Architecture — replacing static persona prompts in LLMs with a continuously updating VAD emotional state vector, blended in real-time via LoRA adapters.</p>
+  </div>
+  <div class="proj-meta">
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Type</div>
+      <div class="proj-meta-value">NLP Research</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Course</div>
+      <div class="proj-meta-value">MIT 6.8610</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Methods</div>
+      <div class="proj-meta-value">LoRA · VAD · Fine-tuning</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Status</div>
+      <div class="proj-meta-value">Research in progress</div>
+    </div>
+  </div>
+</header>
+
+<section class="proj-section">
+  <div class="wip-banner">
+    <div class="wip-dot"></div>
+    Research in progress — paper forthcoming. This page summarizes the architecture and motivation.
+  </div>
+
+  <div class="proj-section-label">The Problem</div>
+  <h2>Personas are <em>frozen in time.</em></h2>
+  <div class="proj-body">
+    <p>Current approaches to LLM personality and tone rely on static system prompts — a fixed description of a persona that doesn't change regardless of what happens in the conversation. A model told to be "warm and empathetic" stays that way whether the user just shared good news or is clearly frustrated.</p>
+    <p>Real emotional intelligence isn't static. <strong>DESA explores what happens when you give a language model a dynamic emotional state</strong> — one that updates continuously as the conversation evolves, and shapes the model's responses accordingly.</p>
+  </div>
+
+  <div class="contrast-block">
+    <div class="contrast-side">
+      <div class="contrast-label">Old approach</div>
+      <div class="contrast-title">Static Persona Prompt</div>
+      <div class="contrast-desc">"You are a warm, empathetic assistant." Fixed at session start. Unchanged regardless of user tone, topic shifts, or emotional escalation. The model performs a character — it doesn't inhabit one.</div>
+    </div>
+    <div class="contrast-side" style="border-color: rgba(196,87,42,0.2); background: rgba(196,87,42,0.02);">
+      <div class="contrast-label new">DESA approach</div>
+      <div class="contrast-title">Dynamic VAD State Vector</div>
+      <div class="contrast-desc">A three-dimensional emotional state [V, A, D] updates after every exchange. LoRA adapters blended in proportion to this state shape the model's outputs in real-time. Emotional context accumulates — it isn't reset.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VAD -->
+<section class="proj-section" style="background: rgba(139,107,71,0.03);">
+  <div class="proj-section-label">The Architecture</div>
+  <h2>Three dimensions, <em>infinite states.</em></h2>
+  <div class="proj-body">
+    <p>DESA grounds emotional state in the <strong>Valence-Arousal-Dominance (VAD)</strong> framework from affective computing — a well-validated three-dimensional model of emotional space. Each dimension is a continuous value updated by a lightweight classifier after each conversational turn.</p>
+  </div>
+  <div class="vad-visual">
+    <div class="vad-dim">
+      <div class="vad-letter">V</div>
+      <div class="vad-name">Valence</div>
+      <div class="vad-desc">Positive vs. negative emotional tone. High valence = pleasant, enthusiastic. Low = frustrated, sad.</div>
+    </div>
+    <div class="vad-dim">
+      <div class="vad-letter">A</div>
+      <div class="vad-name">Arousal</div>
+      <div class="vad-desc">Energy level. High arousal = excited, urgent. Low = calm, subdued. Shapes pacing and word choice.</div>
+    </div>
+    <div class="vad-dim">
+      <div class="vad-letter">D</div>
+      <div class="vad-name">Dominance</div>
+      <div class="vad-desc">Sense of control or agency. High = assertive, confident. Low = uncertain, deferential.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LoRA -->
+<section class="proj-dark">
+  <div class="proj-section-label">LoRA Adapter Blending</div>
+  <h2>State-conditioned <em>model behavior.</em></h2>
+  <div class="proj-body">
+    <p>The VAD state vector drives the selection and blending of <strong>LoRA (Low-Rank Adaptation) adapters</strong> — lightweight fine-tuned model components, each trained to produce outputs characteristic of a specific emotional region of the VAD space.</p>
+    <p>At inference time, adapters are blended in proportion to the current state vector. A shift in the user's tone doesn't require a new prompt — it nudges the blending weights, and the model's output style shifts accordingly. <strong>The emotional state is baked into the computation, not injected as text.</strong></p>
+  </div>
+
+  <div class="feature-grid" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="feature-icon">📐</div>
+      <div class="feature-title">Low-Rank Adaptation</div>
+      <div class="feature-desc">LoRA fine-tunes only a small number of parameters — making it feasible to train multiple adapters per model without the cost of full fine-tuning for each emotional region.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔀</div>
+      <div class="feature-title">Real-Time Blending</div>
+      <div class="feature-desc">Adapters are mixed at inference time using the current VAD vector as blend weights. The model outputs emerge from a combination of emotional states, not a hard switch between them.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔄</div>
+      <div class="feature-title">Continuous Update</div>
+      <div class="feature-desc">A lightweight classifier updates the VAD vector after each conversational turn, tracking the emotional trajectory of the exchange over time — not just the last message.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧪</div>
+      <div class="feature-title">PyTorch + HuggingFace</div>
+      <div class="feature-desc">Implemented in PyTorch using HuggingFace Transformers and PEFT for LoRA adapter management. Experiments run on MIT's compute cluster.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px;">
+    <div class="proj-section-label" style="margin-bottom: 20px;">Stack</div>
+    <div class="stack-grid">
+      <span class="stack-pill">PyTorch</span>
+      <span class="stack-pill">HuggingFace Transformers</span>
+      <span class="stack-pill">PEFT / LoRA</span>
+      <span class="stack-pill">VAD Affective Model</span>
+      <span class="stack-pill">Python</span>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section" style="border-bottom: 2px solid var(--ink);">
+  <div class="proj-section-label">Status</div>
+  <h2>Paper <em>forthcoming.</em></h2>
+  <div class="proj-body">
+    <p>Research is ongoing through MIT's NLP course (6.8610). The research paper will be linked here once complete. The architecture has been developed and validated conceptually — experimental results and ablation studies are in progress.</p>
+  </div>
+</section>
+
+<footer>
+  <span>DESA · MIT NLP Research</span>
+  <a href="../index.html" style="color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;">← Back to portfolio</a>
+  <span>Matthieu Hakim</span>
+</footer>
+
+</body>
+</html>

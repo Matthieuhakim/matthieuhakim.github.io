@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartier Intelligence Agent — Matthieu Hakim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 24px;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .ba-card {
+    padding: 36px 32px;
+    border: 1px solid var(--rule);
+  }
+  .ba-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .ba-label.before { color: var(--muted); }
+  .ba-label.after { color: var(--rust); }
+  .ba-value {
+    font-family: var(--serif); font-size: 36px; font-weight: 300;
+    letter-spacing: -0.02em; line-height: 1; margin-bottom: 8px;
+  }
+  .ba-desc { font-size: 15px; color: var(--muted); font-weight: 300; }
+  .ba-arrow { font-size: 32px; color: var(--rule); text-align: center; }
+
+  .agent-loop {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 32px;
+  }
+  .loop-step {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    padding: 20px 24px;
+    background: rgba(245,240,232,0.03);
+    border: 1px solid rgba(245,240,232,0.08);
+    align-items: start;
+  }
+  .loop-num {
+    font-family: var(--mono); font-size: 11px; color: var(--rust);
+    letter-spacing: 0.1em; padding-top: 3px;
+  }
+  .loop-text { font-size: 16px; line-height: 1.6; color: rgba(245,240,232,0.6); font-weight: 300; }
+  .loop-text strong { color: var(--cream); font-weight: 400; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">MH</a>
+  <a href="../index.html" class="nav-back">← Back to portfolio</a>
+</nav>
+
+<header class="proj-hero">
+  <div>
+    <div class="proj-eyebrow">MIT Gen AI Lab · Spring 2026 · Confidential Client</div>
+    <h1 class="proj-title">Cartier<br><em>Intelligence</em><br>Agent</h1>
+    <p class="proj-tagline">A self-healing web scraping agent and competitive intelligence pipeline — built for a global luxury goods client to monitor markets and surface emerging signals in near real-time.</p>
+  </div>
+  <div class="proj-meta">
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Client</div>
+      <div class="proj-meta-value">Cartier (MIT Gen AI Lab)</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Role</div>
+      <div class="proj-meta-value">Autonomous Agent Developer</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Framework</div>
+      <div class="proj-meta-value">Google ADK</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Confidentiality</div>
+      <div class="proj-meta-value">Client work — architecture shared</div>
+    </div>
+  </div>
+</header>
+
+<!-- Impact -->
+<section class="proj-section">
+  <div class="proj-section-label">The Shift</div>
+  <h2>From days<br><em>to minutes.</em></h2>
+  <div class="proj-body">
+    <p>Collecting competitor pricing and product data across multiple websites used to be a manual, days-long process — prone to breakage every time a competitor updated their site. The agent we built eliminated that entirely.</p>
+  </div>
+  <div class="before-after">
+    <div class="ba-card">
+      <div class="ba-label before">Before</div>
+      <div class="ba-value" style="color: var(--muted);">Days</div>
+      <div class="ba-desc">Manual data collection, breaking on every HTML update</div>
+    </div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-card" style="border-color: rgba(196,87,42,0.3);">
+      <div class="ba-label after">After</div>
+      <div class="ba-value" style="color: var(--rust);">Minutes</div>
+      <div class="ba-desc">Autonomous agent monitoring 3 competitor sites continuously</div>
+    </div>
+  </div>
+</section>
+
+<!-- Self-healing agent -->
+<section class="proj-dark">
+  <div class="proj-section-label">Component 1</div>
+  <h2>The Self-Healing<br><em>Scraping Agent</em></h2>
+  <div class="proj-body">
+    <p>Traditional scrapers break the moment a website changes its HTML structure. Our agent used <strong>LLM-driven navigation</strong> — instead of hard-coded selectors, the agent reads the page, reasons about its structure, and adapts its strategy on the fly.</p>
+    <p>Built with <strong>Google ADK</strong> for agent orchestration, <strong>Playwright</strong> for browser control, and <strong>Firecrawl</strong> for structured extraction. The agent monitors 3 competitor websites and flags changes automatically.</p>
+  </div>
+
+  <div class="agent-loop">
+    <div class="loop-step">
+      <div class="loop-num">01</div>
+      <div class="loop-text"><strong>Navigate.</strong> Playwright opens the target page. The agent receives a snapshot of the rendered HTML.</div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-num">02</div>
+      <div class="loop-text"><strong>Reason.</strong> The LLM analyzes the structure and identifies the relevant data — without pre-defined selectors.</div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-num">03</div>
+      <div class="loop-text"><strong>Extract.</strong> Firecrawl pulls structured data based on the agent's understanding. If the page changed, the reasoning step adapts.</div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-num">04</div>
+      <div class="loop-text"><strong>Flag.</strong> New or changed data is flagged and surfaced. The agent logs what changed and when — no manual review required to notice a shift.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Intelligence pipeline -->
+<section class="proj-section">
+  <div class="proj-section-label">Component 2</div>
+  <h2>Competitive Intelligence<br><em>Pipeline</em></h2>
+  <div class="proj-body">
+    <p>Beyond structured data, the second component ingests unstructured signals from blogs, news sources, and social media. The pipeline uses <strong>entity recognition</strong> to extract relevant brand mentions, product names, and market events, <strong>topic analysis</strong> to cluster signals by theme, and <strong>noise filtering</strong> to separate signal from volume.</p>
+    <p>The output surfaces emerging market signals — trends, competitor launches, sentiment shifts — before they become obvious. Powered by <strong>Vertex AI</strong> on Google Cloud.</p>
+  </div>
+
+  <div class="feature-grid" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="feature-icon">🏷️</div>
+      <div class="feature-title">Entity Recognition</div>
+      <div class="feature-desc">Extracts brand mentions, product names, people, and market events from raw unstructured text across news, blogs, and social feeds.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Topic Analysis</div>
+      <div class="feature-desc">Clusters signals into themes — a product launch, a PR controversy, a pricing shift — so analysts see patterns, not a raw feed.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔇</div>
+      <div class="feature-title">Noise Filtering</div>
+      <div class="feature-desc">High-volume sources produce a lot of irrelevant content. The pipeline filters by relevance score before surfacing anything to the analyst.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Near Real-Time</div>
+      <div class="feature-desc">Signals are ingested and processed continuously — not in daily batch jobs. Market intelligence that was available in days is now available in minutes.</div>
+    </div>
+  </div>
+
+  <div class="stack-grid" style="margin-top: 40px;">
+    <span class="stack-pill">Python</span>
+    <span class="stack-pill">Google ADK</span>
+    <span class="stack-pill">Playwright</span>
+    <span class="stack-pill">Firecrawl</span>
+    <span class="stack-pill">Vertex AI</span>
+    <span class="stack-pill">NLP / Entity Recognition</span>
+    <span class="stack-pill">Google Cloud</span>
+  </div>
+</section>
+
+<footer>
+  <span>Cartier Intelligence Agent · MIT Gen AI Lab</span>
+  <a href="../index.html" style="color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;">← Back to portfolio</a>
+  <span>Matthieu Hakim</span>
+</footer>
+
+</body>
+</html>

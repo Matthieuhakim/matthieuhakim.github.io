@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wing Write — Matthieu Hakim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--rule);
+    margin-top: 48px;
+  }
+  .stat-cell {
+    padding: 36px 32px;
+    border-right: 1px solid var(--rule);
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-big {
+    font-family: var(--serif); font-size: 56px; font-weight: 300;
+    letter-spacing: -0.02em; line-height: 1; color: var(--rust);
+  }
+  .stat-big span { font-style: italic; }
+  .stat-label-sm {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted); margin-top: 8px;
+  }
+
+  .pipeline-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 40px;
+    overflow-x: auto;
+  }
+  .pipe-step {
+    flex: 1;
+    min-width: 120px;
+    padding: 24px 20px;
+    border: 1px solid var(--rule);
+    text-align: center;
+    position: relative;
+  }
+  .pipe-step + .pipe-step { border-left: none; }
+  .pipe-icon { font-size: 22px; margin-bottom: 10px; }
+  .pipe-label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .pipe-arrow {
+    font-size: 18px; color: var(--rule); padding: 0 4px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">MH</a>
+  <a href="../index.html" class="nav-back">← Back to portfolio</a>
+</nav>
+
+<header class="proj-hero">
+  <div>
+    <div class="proj-eyebrow">Startup · Montreal · 2023–2024</div>
+    <h1 class="proj-title">Wing<br><em>Write</em></h1>
+    <p class="proj-tagline">An AI-powered writing tool for cold emails and personalized outreach — built from scratch, launched solo, and used by over a thousand people.</p>
+    <div class="proj-links" style="margin-top:36px;">
+      <a href="https://wingwrite.com" target="_blank" class="proj-link-btn">Live Site ↗</a>
+      <span class="proj-link-btn ghost" style="cursor:default;">Note: some features may be inactive</span>
+    </div>
+  </div>
+  <div class="proj-meta">
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Role</div>
+      <div class="proj-meta-value">Founder + Full-Stack</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Stack</div>
+      <div class="proj-meta-value">Java · JS · SQL</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">AI</div>
+      <div class="proj-meta-value">OpenAI API</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Infra</div>
+      <div class="proj-meta-value">GitHub Actions · Render</div>
+    </div>
+  </div>
+</header>
+
+<!-- Stats -->
+<section class="proj-section">
+  <div class="proj-section-label">Impact</div>
+  <h2>Real users. <em>Real emails.</em></h2>
+  <div class="proj-body">
+    <p>Wing Write started as a personal itch — cold outreach is painful and most people write the same generic email. I built a tool that let anyone write personalized, AI-generated outreach that actually sounded like them.</p>
+  </div>
+  <div class="stat-row">
+    <div class="stat-cell">
+      <div class="stat-big">1<span>K</span>+</div>
+      <div class="stat-label-sm">Users reached</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">10<span>K</span>+</div>
+      <div class="stat-label-sm">Emails generated</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">70<span>%</span></div>
+      <div class="stat-label-sm">Deploy time reduction via CI/CD</div>
+    </div>
+  </div>
+</section>
+
+<!-- What it did -->
+<section class="proj-section" style="background: rgba(139,107,71,0.03);">
+  <div class="proj-section-label">What It Did</div>
+  <h2>Two modes, <em>one goal.</em></h2>
+  <div class="proj-two-col">
+    <div>
+      <div class="feature-card" style="height: 100%;">
+        <div class="feature-icon">📧</div>
+        <div class="feature-title">Cold Email Generator</div>
+        <div class="feature-desc">Users input a recipient, context, and tone — Wing Write used the OpenAI API to generate a personalized, human-sounding cold email ready to send. No templates, no copy-paste. Every email was different.</div>
+      </div>
+    </div>
+    <div>
+      <div class="feature-card" style="height: 100%;">
+        <div class="feature-icon">✍️</div>
+        <div class="feature-title">General Writing Assistant</div>
+        <div class="feature-desc">Beyond cold email — a general AI writing assistant for drafting messages, professional intros, and outreach copy. Users could adjust tone, length, and style before finalizing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technical -->
+<section class="proj-dark">
+  <div class="proj-section-label">Technical Build</div>
+  <h2>Full-stack, <em>zero shortcuts.</em></h2>
+  <div class="proj-body">
+    <p>Wing Write was built entirely solo — frontend, backend, database, deployment, and AI integration. The stack was deliberately pragmatic: Java on the backend for reliability, JavaScript on the frontend for speed, SQL for data persistence.</p>
+    <p>The OpenAI API was called server-side to keep API keys off the client and give control over prompt engineering. Prompts were templated with user context and iterated based on output quality.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div class="proj-section-label" style="margin-bottom: 24px;">CI/CD Pipeline</div>
+    <div class="pipeline-row">
+      <div class="pipe-step">
+        <div class="pipe-icon">💻</div>
+        <div class="pipe-label">Push to GitHub</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <div class="pipe-icon">⚙️</div>
+        <div class="pipe-label">GitHub Actions</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <div class="pipe-icon">🧪</div>
+        <div class="pipe-label">JUnit Tests</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <div class="pipe-icon">🚀</div>
+        <div class="pipe-label">Auto-deploy · Render</div>
+      </div>
+    </div>
+    <p style="font-family: var(--mono); font-size: 12px; color: rgba(245,240,232,0.35); margin-top: 16px; letter-spacing: 0.06em;">Reduced deployment time by 70% and eliminated manual errors in production.</p>
+  </div>
+
+  <div style="margin-top: 48px;">
+    <div class="proj-section-label" style="margin-bottom: 20px;">Stack</div>
+    <div class="stack-grid">
+      <span class="stack-pill">Java (Backend)</span>
+      <span class="stack-pill">JavaScript (Frontend)</span>
+      <span class="stack-pill">SQL (Database)</span>
+      <span class="stack-pill">OpenAI API</span>
+      <span class="stack-pill">GitHub Actions</span>
+      <span class="stack-pill">JUnit</span>
+      <span class="stack-pill">Render</span>
+    </div>
+  </div>
+</section>
+
+<!-- Learnings -->
+<section class="proj-section" style="border-bottom: 2px solid var(--ink);">
+  <div class="proj-section-label">Reflection</div>
+  <h2>What it <em>taught me.</em></h2>
+  <div class="proj-body">
+    <p>Wing Write was my first time building something end-to-end that real people actually used. Getting 1,000 users as a solo founder means you can't hide behind a team — every bug is yours, every user complaint is yours, and every moment of growth feels earned.</p>
+    <p>It also taught me the difference between shipping code and shipping products. The hardest parts weren't technical — they were figuring out what to build next and resisting the urge to add features instead of fixing friction.</p>
+  </div>
+</section>
+
+<footer>
+  <span>Wing Write · 2023–2024</span>
+  <a href="../index.html" style="color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;">← Back to portfolio</a>
+  <span>Matthieu Hakim</span>
+</footer>
+
+</body>
+</html>
