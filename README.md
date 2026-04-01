@@ -1,5 +1,7 @@
 ## Hi there 👋
 
+Link to personal portfolio: https://matthieuhakim.github.io/
+
 <!--
 **Matthieuhakim/Matthieuhakim** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
